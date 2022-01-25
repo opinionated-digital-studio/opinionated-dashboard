@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>factuur-{{ invoiceId }}</title>
+  <link rel="stylesheet" href="/static/reset.css">
+  <link rel="stylesheet" href="/static/paper.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>@page { size: A4 }</style>
+</head>
+  
+  <body class="A4">
+
+  <!-- Each sheet element should have the class "sheet" -->
+  <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+  <section class="sheet padding-10mm flex-col">
+    <div class="header">
+      <div class="header__title">
+        <h1 class="header__document-type">Factuur</h1><span class="header__document-id h3">#{{invoiceId}}</span>
+        <p>Geldig t/m {{ dueDate | formatDate }} </p>
+      </div>
+      <img class="header__logo" src="/static/logo.svg">
+    </div>
+    
+    <div class="window">
+      <p class="window__address">
+        {{ client.companyName }} <br>
+        t.a.v. {{ client.firstName }} {{ client.lastName }} <br>
+        {{ client.streetAddress }}<br>
+        {{ client.postcode | formatPostcode }} &nbsp;{{ client.city }}<br>
+      </p>
+    </div>
+
+    <main class="main">
+      <div class="letter-meta">
+        <div class="letter-meta__row">
+          <h2 class="letter-meta__heading h6">
+            Datum
+          </h2>
+          <p class="letter-meta__item">
+            {{ invoiceDate | formatDate }}
+          </p>
+        </div>
+        <div class="letter-meta__row">
+          <h2 class="letter-meta__heading h6">
+            Betreft
+          </h2>
+          <p class="letter-meta__item">
+            Factuur {{ invoiceId }}
+          </p>
+        </div>
+      </div>
+
+      <div class="pricing-table__wrapper">
+        <div class="pricing-table">
+          <div class="pricing-table__row pricing-table__row--headers">
+            <h3 class="pricing-table__label pricing-table__label--description">
+              Omschrijving
+            </h3>
+            <h3 class="pricing-table__label pricing-table__label--price-excl-vat">
+              Prijs excl. BTW
+            </h3>
+          </div>
+
+          {% for detail in details %}
+            <div class="pricing-table__row">
+              <span class="pricing-table__item-description">
+                {{ detail.description }}
+              </span>
+
+              <span class="pricing-table__price">
+                <div>&euro;</div>
+                <div>{{ detail.price | formatPrice }}</div>
+              </span>
+            </div>
+          {% endfor %}
+
+          <div class="pricing-table__subtotals">
+            <div class="pricing-table__row pricing-table__row--subtotals">
+              <span class="pricing-table__label--subtotal pricing-table__label-subtotal-excl-vat">
+                Subtotaal excl. BTW
+              </span>
+              <span class="pricing-table__subtotal-price">
+                <div>&euro;</div>
+                <div>{{ totalExclVat | formatPrice }}</div>
+              </span>
+            </div>
+
+            <div class="pricing-table__row pricing-table__row--subtotals">
+              <span class="pricing-table__label--subtotal pricing-table__label-subtotal-excl-vat">
+                BTW bedrag (21%)
+              </span>
+              <span class="pricing-table__subtotal-price">
+                <div>&euro;</div>
+                <div>{{ vatAmount | formatPrice }}</div>
+              </span>
+            </div>
+
+            <div class="pricing-table__row pricing-table__row--subtotals">
+              <span class="pricing-table__label--subtotal pricing-table__label-subtotal-excl-vat">
+                Totaal incl. BTW
+              </span>
+              <span class="pricing-table__subtotal-price">
+                <div>&euro;</div>
+                <div>{{ totalInclVat | formatPrice }}</div>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="personal-content">
+        <p class="message">
+          Graag verzoek ik u om het bovenstaand bedrag, onder vermelding van factuurnummer
+          <strong>{{ invoiceId }} </strong> binnen 14 dagen te voldoen op bankrekening:
+          <br>
+          <br>
+          Opinionated<br>
+          NL05 ASNB 8821 0625 38
+
+          <br>
+          <br>
+          Met vriendelijke groet,<br>
+          Pandu
+        </p>
+      </div>
+
+    </main>
+    <footer class="footer">
+      <p class="footer__address">
+        <strong>OPINIONATED</strong><br>
+        Azoren 101<br>
+        3524 EW &nbsp; Utrecht
+        <a href="mailto:mail@opinionated.nl">mail@opinionated.nl</a>
+      </p>
+
+      <p class="footer__company-info">
+        <span class="footer__company-info-label">
+          KVK
+        </span>
+        80404243<br>
+
+        <span class="footer__company-info-label">
+          BTW
+        </span>
+        NL003438771B51<br>
+
+        <span class="footer__company-info-label">
+          IBAN
+        </span>
+        NL05 ASNB 8821 0625 38<br>
+
+        <span class="footer__company-info-label">
+          BIC
+        </span>
+        ASNBNL21<br>
+      </p>
+
+      <p class="footer__av">
+      Op al onze transacties zijn de algemene voorwaarden van toepassing. 
+      Deze kan je vinden op <a href="http://av.opinionated.nl">av.opinionated.nl</a>.
+      </p>
+    </footer>
+
+  </section>
+
+</body>
+</html>

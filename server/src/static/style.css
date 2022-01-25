@@ -1,0 +1,284 @@
+@font-face {
+  font-family: "HK Grotesk";
+  src: url("/static/fonts/HKGrotesk-Regular.woff") format("woff"),
+       url("/static/fonts/HKGrotesk-Regular.woff2") format("woff2"),
+       url("/static/fonts/HKGrotesk-Regular.eot") format("eot");
+}
+
+@font-face {
+  font-family: "HK Grotesk";
+  font-weight: 700;
+  src: url("/static/fonts/HKGrotesk-Bold.woff") format("woff"), url("/static/fonts/HKGrotesk-Bold.woff2") format("woff2"), url("/static/fonts/HKGrotesk-Bold.eot") format("eot"); }
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("/static/fonts/ClashDisplay-Medium.woff") format("woff"), url("/static/fonts/ClashDisplay-Medium.woff2") format("woff2"), url("/static/fonts/ClashDisplay-Medium.eot") format("eot"); }
+
+@font-face {
+  font-family: "Clash Display";
+  font-weight: 700;
+  src: url("/static/fonts/ClashDisplay-Semibold.woff") format("woff"), url("/static/fonts/ClashDisplay-Semibold.woff2") format("woff2"), url("/static/fonts/ClashDisplay-Semibold.eot") format("eot"); }
+
+@font-face {
+    font-family: 'KIX Barcode';
+    src: url('/static/fonts/KIXBarcode.woff2') format('woff2'),
+        url('/static/fonts/KIXBarcode.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+html {
+  font-family: "HK Grotesk";
+}
+
+body {
+  background: white;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #000000;
+}
+
+p {margin-bottom: 1rem;}
+
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+  margin: 2rem 0 0.5rem;
+  font-family: "Clash Display", sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1,
+.h1 {
+  margin-top: 0;
+  font-size: 3.052rem;
+}
+
+h2, .h2 {font-size: 2.441rem;}
+
+h3, .h3 {font-size: 1.953rem;}
+
+h4, .h4 {font-size: 1.563rem;}
+
+h5, .h5 {font-size: 1.25rem;}
+
+h6, .h6 {font-size: 1rem;}
+
+small, .text_small {font-size: 0.8rem;}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.header__title {
+  grid-column: 1 / span 4
+}
+
+.header__document-type {
+  display: inline;
+  margin-right: 0.5ex;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1;
+}
+
+.header__document-title,
+.header__document-id {
+  font-weight: 400;
+  margin-bottom: 0;
+  margin-top: 0;
+  opacity: 0.6;
+  line-height: 1;
+}
+
+.header__logo {
+  grid-column-start: 6;
+}
+
+.window {
+  position: absolute;
+  width: 110mm;
+  height: 40mm;
+  top: 50mm;
+  left: 20mm;
+  padding: 5mm;
+}
+
+.window__address {
+  margin: 0;
+}
+
+.window__kix {
+  font-family: "KIX Barcode";
+  padding: 2mm 0;
+  line-height: 1.7;
+}
+
+.main {
+  padding-top: 16rem;
+}
+
+.main-document {
+  padding-top: 4rem;
+}
+
+.letter-meta__row {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin-bottom: 0.5rem;
+}
+
+.letter-meta {
+  margin-bottom: 3rem;
+}
+
+.letter-meta__heading {
+  line-height: 1.25;
+}
+
+.letter-meta__heading,
+.letter-meta__item {
+  margin: 0;
+  display: flex;
+}
+
+.letter-meta__item {
+  grid-column: 2 / span 3
+}
+
+.pricing-table {
+  margin-bottom: 3rem;
+}
+
+.pricing-table__row {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 79.6%;
+  margin-left: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.document-body {
+  width: 83%;
+}
+
+.pricing-table__row--headers {
+  border-bottom: 1px solid black;
+  padding: 0.25rem 0.5rem;
+}
+
+.pricing-table__label {
+  font-family: "HK Grotesk";
+  font-size: 1rem;
+  margin: 0;
+}
+
+.pricing-table__label--description,
+.pricing-table__item-description {
+  grid-column: 1 / span 3;
+}
+
+.pricing-table__label--price-excl-vat,
+.pricing-table__price {
+  grid-column: 4 / span 1;
+}
+
+.pricing-table__price,
+.pricing-table__subtotal-price {
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.pricing-table__subtotals {
+  margin-top: 2rem;
+}
+
+.pricing-table__label--subtotal {
+  margin-left: 25%;
+  grid-column: 2 / span 2;
+  font-weight: bold;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.personal-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.message {
+  grid-column: 1 / span 4;
+}
+
+#sleep-on-it {
+ position: absolute;
+ bottom: 14%;
+ left: 70%;
+}
+
+.footer {
+  border-top: 1px solid black;
+  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  font-size: 0.85rem;
+  margin-top: auto;
+}
+
+.footer__address {
+  margin: 0;
+  grid-column: 1 / span 2;
+}
+
+.footer__company-info {
+  grid-column: 3 / span 2;
+}
+
+.footer__av,
+.footer__company-info {
+  margin: 0;
+}
+
+.footer__company-info-label {
+  display: inline-block;
+  width: 5ex;
+}
+
+.footer__av {
+  grid-column: 5 / span 2;
+}
+
+.page-number {
+  position: absolute;
+  transform-origin: top left;
+  transform: rotate(90deg) translateX(-50%);
+  right: -8.2%;
+  top: 50%;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.timeline__title {
+  margin-bottom: 0; 
+}
+
+.h5 + .timeline__date {
+  display: block;
+  margin-bottom: 0.5rem;
+}
